@@ -1,0 +1,11 @@
+# Be careful when changing this file. Changing the line order may affect git behavior too.
+
+# Exclude everything but .yaml and .gitignore files
+*
+!*.yaml
+!.gitignore
+!README.md
+
+# Exclude files with sensitive data
+secrets.yaml
+known_devices.yaml

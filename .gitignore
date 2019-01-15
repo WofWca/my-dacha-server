@@ -1,0 +1,23 @@
+# Only include Home Assistant related files.
+/*
+!/.gitignore
+!/home/
+!/etc/
+
+# Home Assistant user data (main part)
+/home/*
+!/home/homeassistant/
+
+/etc/*
+!/etc/systemd/
+!/etc/motion/
+
+# Home Assistant service config
+/etc/systemd/*
+!/etc/systemd/system/
+/etc/systemd/system/*
+!/etc/systemd/system/home-assistant@homeassistant.service
+
+# "Motion" config (drives the camera)
+/etc/motion/*
+!/etc/motion/motion.conf
