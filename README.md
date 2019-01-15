@@ -7,6 +7,8 @@ The system's set up on Linux Mint.
 ## Camera
 This automation server is set up according to [this](https://www.home-assistant.io/blog/2016/06/23/usb-webcams-and-home-assistant/) and [this](https://www.home-assistant.io/components/camera/) and uses `motion` package (`sudo apt install motion`).
 
+Config's at `etc/motion/motion.conf`.
+
 ## SSH
 Server-side: `sudo apt install openssh-server`
 
