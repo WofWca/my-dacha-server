@@ -11,6 +11,7 @@
 /etc/*
 !/etc/systemd/
 !/etc/motion/
+!/etc/ufw/
 
 # Home Assistant service config
 /etc/systemd/*
@@ -21,3 +22,9 @@
 # "Motion" config (drives the camera)
 /etc/motion/*
 !/etc/motion/motion.conf
+
+# UFW (Uncomplicated Firewall)
+/etc/ufw/*
+!/etc/ufw/user.rules
+!/etc/ufw/user6.rules
+!/etc/ufw/ufw.conf
