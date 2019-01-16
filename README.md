@@ -1,12 +1,6 @@
 ## OS
 The system's set up on Linux Mint.
 
-## Autorun
-`/etc/systemd/system/home-assistant@homeassistant.service`
-
-## Camera
-This automation server is set up according to [this](https://www.home-assistant.io/blog/2016/06/23/usb-webcams-and-home-assistant/) and [this](https://www.home-assistant.io/components/camera/) and uses `motion` package (`sudo apt install motion`).
-
 Config's at `etc/motion/motion.conf`.
 
 ## SSH
@@ -40,3 +34,9 @@ To                         Action      From
 22/tcp                     ALLOW IN    Anywhere
 22/tcp (v6)                ALLOW IN    Anywhere (v6)
 ```
+
+## Autorun
+`/etc/systemd/system/home-assistant@homeassistant.service`
+
+## Camera
+This automation server is set up according to [this](https://www.home-assistant.io/blog/2016/06/23/usb-webcams-and-home-assistant/) and [this](https://www.home-assistant.io/components/camera/) and uses `motion` package (`sudo apt install motion`).
