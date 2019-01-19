@@ -12,6 +12,7 @@
 !/etc/systemd/
 !/etc/motion/
 !/etc/ufw/
+!/etc/ssh/
 
 # Home Assistant service config
 /etc/systemd/*
@@ -28,3 +29,7 @@
 !/etc/ufw/user.rules
 !/etc/ufw/user6.rules
 !/etc/ufw/ufw.conf
+
+# SSHD config
+/etc/ssh/*
+!/etc/ssh/sshd_config
