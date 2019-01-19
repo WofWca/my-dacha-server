@@ -15,6 +15,9 @@ There are a couple of solutions:
 
     If it's down, communication will be interrupted. It can be solved by setting up an additional tunnel on a different server.
     Also, "serveo.net" currently doesn't load using "MTS" ISP.
+- VPN
+
+    Has to be expensive
 
 We decided to use "serveo.net".
 
