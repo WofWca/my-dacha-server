@@ -1,12 +1,27 @@
+## Remote access
+# TL;DR
+Server: `ssh -R dacha:22:localhost:22 serveo.net`. `autossh`, to be precise.
+Client: `ssh -J serveo.net -i ~/.ssh/homeassistant@dacha_id_ed25519 -L 8000:localhost:8123 homeassistant@dacha`, where `homeassistant@dacha_id_ed25519` is a private SSH key for server user `homeassistant`. Then go to `localhost:8000`.
+
+In order for two computers to communicate via internet, there must be one with a real IP. As most (if not all) of ISPs currently use NAT (it's called CG-NAT), we can't directly connect clients and the server.
+There are a couple of solutions:
+- IPv6
+
+    For now, not many ISPs are willing to support it.
+- Rent a dedicated IP from ISP
+
+    Expensive
+- Use an intermediate host, where we can set up a reverse SSH tunnel. Like "serveo.net".
+
+    If it's down, communication will be interrupted. It can be solved by setting up an additional tunnel on a different server.
+    Also, "serveo.net" currently doesn't load using "MTS" ISP.
+
+We decided to use "serveo.net".
+
+SSHD config's at `/etc/ssh/sshd_config`
+
 ## OS
 The system's set up on Linux Mint.
-
-## SSH
-Server-side: `sudo apt install openssh-server`
-
-Client side: Use PuTTY or Bash to connect. Bash: `ssh <server_username>@<ip_address_or_host_name>`
-
-**Consider using key-based auth** (Search "openssh key", [for example](https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/create-with-openssh/))
 
 ## Firewall (UFW)
 We know that there is router NAT usually. Additional measures won't hurt.
