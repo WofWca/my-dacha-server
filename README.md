@@ -1,7 +1,7 @@
 ## Remote access
 ##### TL;DR
 Server: `ssh -R dacha:22:localhost:22 serveo.net`. `autossh`, to be precise.
-Client: `ssh -J serveo.net -i ~/.ssh/homeassistant@dacha_id_ed25519 -L 8000:localhost:8123 homeassistant@dacha`, where `homeassistant@dacha_id_ed25519` is a private SSH key for server user `homeassistant`. Then go to `localhost:8000`.
+Client: `ssh -NJ serveo.net -i ~/.ssh/homeassistant@dacha_id_ed25519 -L 8000:localhost:8123 homeassistant@dacha`, where `homeassistant@dacha_id_ed25519` is a private SSH key for server user `homeassistant`. Then go to `localhost:8000`.
 
 In order for two computers to communicate via internet, there must be one with a real IP. As most (if not all) of ISPs currently use NAT (it's called CG-NAT), we can't directly connect clients and the server.
 There are a couple of solutions:
