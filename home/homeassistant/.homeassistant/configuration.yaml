@@ -94,6 +94,13 @@ sensor my_template:
           Нет
         {% else %}
         {% endif %}
+      icon_template: >-
+        {% if states.binary_sensor.well_water_present.state == 'on' %}
+          mdi:water
+        {% elif states.binary_sensor.well_water_present.state == 'off' %}
+          mdi:water-off
+        {% else %}
+        {% endif %}
     tank:
       friendly_name: "Резервуар"
       value_template: >-
@@ -101,5 +108,12 @@ sensor my_template:
           Полный
         {% elif states.binary_sensor.tank_full.state == 'off' %}
           Не полный
+        {% else %}
+        {% endif %}
+      icon_template: >-
+        {% if states.binary_sensor.tank_full.state == 'on' %}
+          mdi:battery
+        {% elif states.binary_sensor.tank_full.state == 'off' %}
+          mdi:battery-20
         {% else %}
         {% endif %}
