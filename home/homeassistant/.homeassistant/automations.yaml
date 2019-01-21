@@ -1,1 +1,13 @@
-[]
+- alias: pump_prevent_idling
+  trigger:
+  - entity_id: binary_sensor.well_water_present
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - before: sunrise
+    condition: sun
+  action:
+  - service: system_log.write
+    data:
+      message: "Prevent idling stub"
