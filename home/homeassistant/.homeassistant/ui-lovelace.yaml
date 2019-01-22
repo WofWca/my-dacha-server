@@ -9,7 +9,7 @@ views:
       title: Насос
       show_header_toggle: false
       entities:
-        - entity: sensor.well
-        - entity: sensor.tank
-        - entity: automation.pump_prevent_idling
-          name: "Не допускать работы вхолостую"
+      - entity: sensor.well
+      - entity: sensor.tank
+      - entity: automation.pump_prevent_idling
+        name: "Не допускать работы вхолостую"
