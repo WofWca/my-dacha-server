@@ -9,7 +9,13 @@ views:
       title: Насос
       show_header_toggle: false
       entities:
-      - entity: sensor.well
-      - entity: sensor.tank
-      - entity: automation.pump_prevent_idling
-        name: "Не допускать работы вхолостую"
+      # TODO Only show pump's actual state, don't allow switching it directly.
+      # Or maybe allow swithing it directly, when automatizations are off?
+      # Consider using group.set_visibility
+      - input_boolean.pump_desired_state
+      - type: divider
+      - binary_sensor.pump_state
+      - binary_sensor.well
+      - binary_sensor.tank
+      - type: divider
+      - switch.automation_pump_off_when_no_water

@@ -1,0 +1,6 @@
+automation_pump_off_when_no_water:
+  name: automation_pump_off_when_no_water
+  all: true
+  entities:
+  - automation.pump_off_when_water_exhausted
+  - automation.pump_on_when_water_comes

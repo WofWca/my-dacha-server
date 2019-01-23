@@ -1,8 +1,10 @@
-binary_sensor.well_water_present:
-  hidden: true
-binary_sensor.tank_full:
-  hidden: true
-sensor.well:
-  device_class: moisture
-sensor.tank:
-  device_class: moisture
+binary_sensor.tank:
+  friendly_name: Резервуар
+binary_sensor.well:
+  friendly_name: Скважина
+input_boolean.pump_desired_state:
+  friendly_name: Насос, желательное состояние
+switch.automation_pump_off_when_no_water:
+  friendly_name: Выключать насос в отсутствие воды
+binary_sensor.pump_state:
+  friendly_name: Насос
