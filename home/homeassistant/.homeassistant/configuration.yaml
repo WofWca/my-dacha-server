@@ -75,66 +75,65 @@ camera cam1:
   mjpeg_url: http://localhost:8081
 
 binary_sensor:
-# The well stub
-- platform: template
-  sensors:
-    well:
-      value_template: "{{ is_state('input_boolean.well_stub', 'on') }}"
-      entity_id: input_boolean.well_stub
-      # On = full, off = not full.
-      device_class: moisture
-# The tank stub
-- platform: template
-  sensors:
-    tank:
-      value_template: "{{ is_state('input_boolean.tank_stub', 'on') }}"
-      entity_id: input_boolean.tank_stub
-      # On = full, off = not full.
-      device_class: moisture
-# To display the pump state without making it possible to change it.
-- platform: template
-  sensors:
-    pump_state:
-      value_template: "{{ is_state('switch.pump', 'on') }}"  # TODO Can't it be like `states.switch.pump.state` ?
-      entity_id: switch.pump
-      device_class: plug
-      icon_template: >-
-        {% if is_state('switch.pump', 'on') %}
-          mdi:engine
-        {% else %}
-          mdi:engine-off
-        {% endif %}
-
+  # The well stub
+  - platform: template
+    sensors:
+      well:
+        value_template: "{{ is_state('input_boolean.well_stub', 'on') }}"
+        entity_id: input_boolean.well_stub
+        # On = full, off = not full.
+        device_class: moisture
+  # The tank stub
+  - platform: template
+    sensors:
+      tank:
+        value_template: "{{ is_state('input_boolean.tank_stub', 'on') }}"
+        entity_id: input_boolean.tank_stub
+        # On = full, off = not full.
+        device_class: moisture
+  # To display the pump state without making it possible to change it.
+  - platform: template
+    sensors:
+      pump_state:
+        value_template: "{{ is_state('switch.pump', 'on') }}" # TODO Can't it be like `states.switch.pump.state` ?
+        entity_id: switch.pump
+        device_class: plug
+        icon_template: >-
+          {% if is_state('switch.pump', 'on') %}
+            mdi:engine
+          {% else %}
+            mdi:engine-off
+          {% endif %}
 
 switch:
-# TODO You can then leave it as a wrapper or replace it with a real one.
-- platform: template
-  switches:
-    pump:
-      value_template: "{{ states('input_boolean.pump_stub') }}"
-      entity_id: input_boolean.pump_stub  # It won't work. Apparently,
-      # templates do not generate state changes Bug?
-      turn_on:
-        # TODO
-        service: input_boolean.turn_on
-        entity_id: input_boolean.pump_stub
-      turn_off:
-        # TODO
-        service: input_boolean.turn_off
-        entity_id: input_boolean.pump_stub
-    # `group.automation_pump_off_when_no_water` wrapper
-- platform: template
-  switches:
-    automation_pump_off_when_no_water:
-      value_template: "{{ states('group.automation_pump_off_when_no_water') }}"
-      entity_id: group.automation_pump_off_when_no_water
-      turn_on:
-        service: homeassistant.turn_on
+  # TODO You can then leave it as a wrapper or replace it with a real one.
+  - platform: template
+    switches:
+      pump:
+        value_template: "{{ states('input_boolean.pump_stub') }}"
+        entity_id: input_boolean.pump_stub # It won't work. Apparently,
+        # templates do not generate state changes Bug?
+        turn_on:
+          # TODO
+          service: input_boolean.turn_on
+          entity_id: input_boolean.pump_stub
+        turn_off:
+          # TODO
+          service: input_boolean.turn_off
+          entity_id: input_boolean.pump_stub
+      # `group.automation_pump_off_when_no_water` wrapper
+  - platform: template
+    switches:
+      automation_pump_off_when_no_water:
+        value_template: "{{ states('group.automation_pump_off_when_no_water') }}"
         entity_id: group.automation_pump_off_when_no_water
-      turn_off:
-        service: homeassistant.turn_off
-        entity_id: group.automation_pump_off_when_no_water
-      icon_template: mdi:settings-box
+        turn_on:
+          service: homeassistant.turn_on
+          entity_id: group.automation_pump_off_when_no_water
+        turn_off:
+          service: homeassistant.turn_off
+          entity_id: group.automation_pump_off_when_no_water
+        icon_template: mdi:settings-box
 
 input_boolean:
   pump_desired_state:
@@ -142,3 +141,4 @@ input_boolean:
   pump_stub:
   well_stub:
   tank_stub:
+

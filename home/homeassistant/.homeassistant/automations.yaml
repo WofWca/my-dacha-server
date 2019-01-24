@@ -5,26 +5,26 @@
 - id: pump_off_when_water_exhausted
   alias: pump_off_when_water_exhausted
   trigger:
-  - platform: state
-    entity_id: binary_sensor.well
-    to: 'off'
+    - platform: state
+      entity_id: binary_sensor.well
+      to: "off"
   action:
-  - service: switch.turn_off
-    entity_id: switch.pump
+    - service: switch.turn_off
+      entity_id: switch.pump
 # Turn the pump back on when water comes back.
 - id: pump_on_when_water_comes
   alias: pump_on_when_water_comes
   trigger:
-  - platform: state
-    entity_id: binary_sensor.well
-    to: 'on'
+    - platform: state
+      entity_id: binary_sensor.well
+      to: "on"
   condition:
-  - condition: state
-    entity_id: input_boolean.pump_desired_state
-    state: 'on'
+    - condition: state
+      entity_id: input_boolean.pump_desired_state
+      state: "on"
   action:
-  - service: switch.turn_on
-    entity_id: switch.pump
+    - service: switch.turn_on
+      entity_id: switch.pump
 
 # Watch the "pump_desired_state" input.
 # TODO if automation is disabled, the "pump" state must mimic pump_desired_state,
@@ -32,37 +32,37 @@
 - id: pump_off_when_desired_off
   alias: pump_off_when_desired_off
   trigger:
-  - platform: state
-    entity_id: input_boolean.pump_desired_state
-    to: 'off'
+    - platform: state
+      entity_id: input_boolean.pump_desired_state
+      to: "off"
   action:
-  - service: switch.turn_off
-    entity_id: switch.pump
+    - service: switch.turn_off
+      entity_id: switch.pump
 - id: pump_on_when_desired_on
   alias: pump_on_when_desired_on
   trigger:
-  - platform: state
-    entity_id: input_boolean.pump_desired_state
-    to: 'on'
+    - platform: state
+      entity_id: input_boolean.pump_desired_state
+      to: "on"
   condition:
     # If (automation.pump_off_when_water_exhausted == on and well == on) or
     # automation.pump_off_when_water_exhausted == off .
     condition: or
     conditions:
-    - condition: and
-      conditions:
+      - condition: and
+        conditions:
+          - condition: state
+            entity_id: group.automation_pump_off_when_no_water
+            state: "on"
+          - condition: state
+            entity_id: binary_sensor.well
+            state: "on"
       - condition: state
         entity_id: group.automation_pump_off_when_no_water
-        state: 'on'
-      - condition: state
-        entity_id: binary_sensor.well
-        state: 'on'
-    - condition: state
-      entity_id: group.automation_pump_off_when_no_water
-      state: 'off'
+        state: "off"
   action:
-  - service: switch.turn_on
-    entity_id: switch.pump
+    - service: switch.turn_on
+      entity_id: switch.pump
 
 # Switch the pump on or off when automation gets turned on or off.
 #
@@ -70,62 +70,62 @@
 - id: pump_off_when_automation_off
   alias: pump_off_when_automation_off
   trigger:
-  - platform: state
-    entity_id: group.automation_pump_off_when_no_water
-    to: 'off'
+    - platform: state
+      entity_id: group.automation_pump_off_when_no_water
+      to: "off"
   condition:
-  - condition: state
-    entity_id: input_boolean.pump_desired_state
-    state: 'off'
+    - condition: state
+      entity_id: input_boolean.pump_desired_state
+      state: "off"
   action:
-  - service: switch.turn_off
-    entity_id: switch.pump
+    - service: switch.turn_off
+      entity_id: switch.pump
 - id: pump_on_when_automation_off
   alias: pump_on_when_automation_off
   trigger:
-  - platform: state
-    entity_id: group.automation_pump_off_when_no_water
-    to: 'off'
+    - platform: state
+      entity_id: group.automation_pump_off_when_no_water
+      to: "off"
   condition:
-  - condition: state
-    entity_id: input_boolean.pump_desired_state
-    state: 'on'
+    - condition: state
+      entity_id: input_boolean.pump_desired_state
+      state: "on"
   action:
-  - service: switch.turn_on
-    entity_id: switch.pump
+    - service: switch.turn_on
+      entity_id: switch.pump
 - id: pump_off_when_automation_on
   alias: pump_off_when_automation_on
   trigger:
-  - platform: state
-    entity_id: group.automation_pump_off_when_no_water
-    to: 'on'
+    - platform: state
+      entity_id: group.automation_pump_off_when_no_water
+      to: "on"
   condition:
     condition: or
     conditions:
-    - condition: state
-      entity_id: input_boolean.pump_desired_state
-      state: 'off'
-    - condition: state
-      entity_id: binary_sensor.well
-      state: 'off'
+      - condition: state
+        entity_id: input_boolean.pump_desired_state
+        state: "off"
+      - condition: state
+        entity_id: binary_sensor.well
+        state: "off"
   action:
-  - service: switch.turn_off
-    entity_id: switch.pump
+    - service: switch.turn_off
+      entity_id: switch.pump
 - id: pump_on_when_automation_on
   alias: pump_on_when_automation_on
   trigger:
-  - platform: state
-    entity_id: group.automation_pump_off_when_no_water
-    to: 'on'
+    - platform: state
+      entity_id: group.automation_pump_off_when_no_water
+      to: "on"
   condition:
     condition: and
     conditions:
-    - condition: state
-      entity_id: input_boolean.pump_desired_state
-      state: 'on'
-    - condition: state
-      entity_id: binary_sensor.well
-      state: 'on'
+      - condition: state
+        entity_id: input_boolean.pump_desired_state
+        state: "on"
+      - condition: state
+        entity_id: binary_sensor.well
+        state: "on"
   action:
-  - service: switch.turn_on
-    entity_id: switch.pump
+    - service: switch.turn_on
+      entity_id: switch.pump
