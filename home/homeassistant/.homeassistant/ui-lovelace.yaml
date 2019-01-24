@@ -4,9 +4,9 @@ views:
   # General
   - title: Общее
     cards:
-    - type: entities
       # Pump
-      title: Насос
+    - title: Насос
+      type: entities
       show_header_toggle: false
       entities:
       # TODO Only show pump's actual state, don't allow switching it directly.
