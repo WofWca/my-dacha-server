@@ -1,6 +1,7 @@
 # Only include Home Assistant related files.
 /*
 !/.gitignore
+!/.README.md
 !/home/
 !/etc/
 
