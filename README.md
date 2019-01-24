@@ -1,3 +1,5 @@
+![UI Screenshot](ui_screenshot.png)
+
 ## Remote access
 ##### TL;DR
 Server: `ssh -R dacha:22:localhost:22 serveo.net`. `autossh`, to be precise.
