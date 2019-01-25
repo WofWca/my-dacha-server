@@ -121,21 +121,11 @@ switch:
           # TODO
           service: input_boolean.turn_off
           entity_id: input_boolean.pump_stub
-      # `group.automation_pump_off_when_no_water` wrapper
-  - platform: template
-    switches:
-      automation_pump_off_when_no_water:
-        value_template: "{{ states('group.automation_pump_off_when_no_water') }}"
-        entity_id: group.automation_pump_off_when_no_water
-        turn_on:
-          service: homeassistant.turn_on
-          entity_id: group.automation_pump_off_when_no_water
-        turn_off:
-          service: homeassistant.turn_off
-          entity_id: group.automation_pump_off_when_no_water
-        icon_template: mdi:settings-box
 
 input_boolean:
+  automation_pump_off_when_no_water:
+    icon: mdi:settings-box
+    initial: on
   pump_desired_state:
   # TODO remove these when you have the actual sensors/switches.
   pump_stub:

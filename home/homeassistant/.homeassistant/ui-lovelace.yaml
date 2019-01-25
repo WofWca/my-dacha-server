@@ -18,7 +18,7 @@ views:
           - binary_sensor.well
           - binary_sensor.tank
           - type: divider
-          - switch.automation_pump_off_when_no_water
+          - input_boolean.automation_pump_off_when_no_water
       - title: Debug
         type: entities
         show_header_toggle: false
