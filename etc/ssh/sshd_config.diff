@@ -1,5 +1,11 @@
 --- /etc/ssh/sshd_config.original_copy	2018-11-25 16:48:59.225312088 +0800
 +++ /etc/ssh/sshd_config	2019-01-25 17:24:57.091567945 +0800
-@@ -56 +56 @@
+@@ -53,7 +53,7 @@
+ #IgnoreRhosts yes
+ 
+ # To disable tunneled clear text passwords, change to no here!
 -#PasswordAuthentication yes
 +PasswordAuthentication no
+ #PermitEmptyPasswords no
+ 
+ # Change to yes to enable challenge-response passwords (beware issues with

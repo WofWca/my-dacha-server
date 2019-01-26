@@ -1,6 +1,9 @@
 --- /etc/ufw/original_user.rules	2019-01-26 18:14:17.371113571 +0800
 +++ /etc/ufw/user.rules	2019-01-25 17:24:56.595565229 +0800
-@@ -4,0 +5,11 @@
+@@ -2,10 +2,37 @@
+ :ufw-user-input - [0:0]
+ :ufw-user-output - [0:0]
+ :ufw-user-forward - [0:0]
 +:ufw-before-logging-input - [0:0]
 +:ufw-before-logging-output - [0:0]
 +:ufw-before-logging-forward - [0:0]
@@ -12,7 +15,9 @@
 +:ufw-after-logging-forward - [0:0]
 +:ufw-logging-deny - [0:0]
 +:ufw-logging-allow - [0:0]
-@@ -7,0 +19,15 @@
+ :ufw-user-limit - [0:0]
+ :ufw-user-limit-accept - [0:0]
+ ### RULES ###
 +
 +### tuple ### allow tcp 22 0.0.0.0/0 any 0.0.0.0/0 in
 +-A ufw-user-input -p tcp --dport 22 -j ACCEPT
@@ -28,5 +33,8 @@
 +### END LOGGING ###
 +
 +### RATE LIMITING ###
-@@ -10,0 +37 @@
+ -A ufw-user-limit -m limit --limit 3/minute -j LOG --log-prefix "[UFW LIMIT BLOCK] "
+ -A ufw-user-limit -j REJECT
+ -A ufw-user-limit-accept -j ACCEPT
 +### END RATE LIMITING ###
+ COMMIT

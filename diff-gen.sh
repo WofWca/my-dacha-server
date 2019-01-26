@@ -26,5 +26,5 @@ for (( i=0; i<${#curr_files[@]}; i++ )) do
 		fi
 	fi
 	echo "Writing ${diff_files[i]}"
-	diff --unified=0 "${orig_files[i]}" "${curr_files[i]}" > "${diff_files[i]}"
+	diff --unified "${orig_files[i]}" "${curr_files[i]}" > "${diff_files[i]}"
 done
