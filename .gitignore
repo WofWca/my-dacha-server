@@ -28,13 +28,18 @@
 # "Motion" config (drives the camera)
 /etc/motion/*
 !/etc/motion/motion.conf
+!/etc/motion/motion.conf.diff
 
 # UFW (Uncomplicated Firewall)
 /etc/ufw/*
 !/etc/ufw/user.rules
 !/etc/ufw/user6.rules
 !/etc/ufw/ufw.conf
+!/etc/ufw/user.rules.diff
+!/etc/ufw/user6.rules.diff
+!/etc/ufw/ufw.conf.diff
 
 # SSHD config
 /etc/ssh/*
 !/etc/ssh/sshd_config
+!/etc/ssh/sshd_config.diff

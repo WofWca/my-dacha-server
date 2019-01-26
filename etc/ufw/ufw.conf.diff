@@ -1,0 +1,5 @@
+--- /etc/ufw/original_ufw.conf	2019-01-26 18:13:39.370907090 +0800
++++ /etc/ufw/ufw.conf	2019-01-25 17:24:56.595565229 +0800
+@@ -6 +6 @@
+-ENABLED=no
++ENABLED=yes

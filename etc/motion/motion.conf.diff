@@ -1,0 +1,56 @@
+--- /etc/motion/original_motion.conf	2019-01-26 15:15:16.352400100 +0800
++++ /etc/motion/motion.conf	2019-01-25 17:24:56.479564594 +0800
+@@ -25 +25 @@
+-;logfile /tmp/motion.log
++logfile /var/log/motion/motion.log
+@@ -100 +100 @@
+-width 320
++width 1024
+@@ -103 +103 @@
+-height 240
++height 768
+@@ -107 +107 @@
+-framerate 2
++framerate 10
+@@ -242 +242 @@
+-pre_capture 0
++pre_capture 1
+@@ -245 +245 @@
+-post_capture 0
++post_capture 1
+@@ -279 +279 @@
+-quality 75
++quality 100
+@@ -293 +293 @@
+-ffmpeg_output_movies on
++ffmpeg_output_movies off
+@@ -373 +373 @@
+-snapshot_interval 0
++snapshot_interval 900
+@@ -405 +405 @@
+-text_right %Y-%m-%d\n%T-%q
++text_right %d.%m.%Y\n%T %q
+@@ -450 +450 @@
+-#target_dir /tmp/motion
++target_dir /tmp/motion
+@@ -459 +459 @@
+-snapshot_filename %v-%Y%m%d%H%M%S-snapshot
++snapshot_filename %d.%m.%Y %H:%M:%S %v-snapshot
+@@ -468 +468 @@
+-picture_filename %v-%Y%m%d%H%M%S-%q
++picture_filename %d.%m.%Y %H:%M:%S %q-%v
+@@ -494 +494 @@
+-stream_quality 50
++stream_quality 100
+@@ -498 +498 @@
+-stream_motion off
++stream_motion on
+@@ -501 +501 @@
+-stream_maxrate 1
++stream_maxrate 30
+@@ -534 +534 @@
+-webcontrol_port 8080
++webcontrol_port 8082
+@@ -647 +647 @@
+-; on_picture_save value
++; on_picture_save ln -sfT "%f" "/tmp/motion/lastsnap.jpg"
