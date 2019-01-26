@@ -60,3 +60,6 @@ To                         Action      From
 This automation server is set up according to [this](https://www.home-assistant.io/blog/2016/06/23/usb-webcams-and-home-assistant/) and [this](https://www.home-assistant.io/components/camera/) and uses `motion` package (`sudo apt install motion`).
 
 Config's at `etc/motion/motion.conf`.
+
+#### /diff-gen.sh
+Makes it easier to see what's been changed in the config files.
