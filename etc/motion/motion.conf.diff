@@ -1,5 +1,5 @@
 --- /etc/motion/original_motion.conf	2019-01-26 15:15:16.352400100 +0800
-+++ /etc/motion/motion.conf	2019-01-25 17:24:56.479564594 +0800
++++ /etc/motion/motion.conf	2019-01-27 14:52:19.503597612 +0800
 @@ -22,7 +22,7 @@
  
  
@@ -103,12 +103,7 @@
  
  # File path for motion triggered ffmpeg films (movies) relative to target_dir
  # Default: %v-%Y%m%d%H%M%S
-@@ -491,14 +491,14 @@
- stream_port 8081
- 
- # Quality of the jpeg (in percent) images produced (default: 50)
--stream_quality 50
-+stream_quality 100
+@@ -495,7 +495,7 @@
  
  # Output frames at 1 fps when no motion is detected and increase to the
  # rate given by stream_maxrate when motion is detected (default: off)
@@ -116,11 +111,7 @@
 +stream_motion on
  
  # Maximum framerate for stream streams (default: 1)
--stream_maxrate 1
-+stream_maxrate 30
- 
- # Restrict stream connections to localhost only (default: on)
- stream_localhost on
+ stream_maxrate 1
 @@ -531,7 +531,7 @@
  ############################################################
  
