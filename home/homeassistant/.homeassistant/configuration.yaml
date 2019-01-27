@@ -71,6 +71,7 @@ script: !include scripts.yaml
 
 # Camera
 camera cam1:
+  name: usb_camera_1
   platform: mjpeg
   mjpeg_url: http://localhost:8081
 

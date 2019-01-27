@@ -19,6 +19,10 @@ views:
           - binary_sensor.tank
           - type: divider
           - input_boolean.automation_pump_off_when_no_water
+      - type: picture-entity
+        entity: camera.usb_camera_1
+        show_name: no
+        show_state: no
       - title: Debug
         type: entities
         show_header_toggle: false
