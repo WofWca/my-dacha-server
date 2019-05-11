@@ -1,6 +1,6 @@
 --- /etc/ufw/original_user.rules	2019-01-26 18:14:17.371113571 +0800
-+++ /etc/ufw/user.rules	2019-01-25 17:24:56.595565229 +0800
-@@ -2,10 +2,37 @@
++++ /etc/ufw/user.rules	2019-05-11 19:15:59.644730406 +0800
+@@ -2,10 +2,40 @@
  :ufw-user-input - [0:0]
  :ufw-user-output - [0:0]
  :ufw-user-forward - [0:0]
@@ -21,6 +21,9 @@
 +
 +### tuple ### allow tcp 22 0.0.0.0/0 any 0.0.0.0/0 in
 +-A ufw-user-input -p tcp --dport 22 -j ACCEPT
++
++### tuple ### allow any any 0.0.0.0/0 any 192.168.0.0/16 in
++-A ufw-user-input -s 192.168.0.0/16 -j ACCEPT
 +
 +### END RULES ###
 +
