@@ -53,6 +53,9 @@ To                         Action      From
 22/tcp (v6)                ALLOW IN    Anywhere (v6)
 ```
 
+## Mosquitto (MQTT broker)
+`sudo apt-get install mosqutto`, change/add config files. Make Home Assistant run after Mosquitto is running (edit the Home Assistant service file).
+
 ## Autorun
 `/etc/systemd/system/home-assistant@homeassistant.service`
 

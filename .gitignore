@@ -18,6 +18,7 @@
 !/etc/motion/
 !/etc/ufw/
 !/etc/ssh/
+!/etc/mosquitto/
 
 # Home Assistant service config
 /etc/systemd/*
@@ -43,3 +44,10 @@
 /etc/ssh/*
 !/etc/ssh/sshd_config
 !/etc/ssh/sshd_config.diff
+
+# Mosquitto
+/etc/mosquitto/*
+!/etc/mosquitto/mosquitto.conf
+!/etc/mosquitto/mosquitto.conf.diff
+!/etc/mosquitto/conf.d/
+/etc/mosquitto/conf.d/README
