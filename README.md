@@ -5,6 +5,8 @@
 ```
 autossh -M 0 -o ServerAliveInterval=60 -R my-serveo-alias:22:localhost:22 -R my-reserve-serveo-alias:22:localhost:22 serveo.net
 ```
+A service is configured for this. Before launching the service, a manual connection needs to be performed as the superuser in order to add the server's fingerprint to `known_hosts`.
+
 #### Client (Home Assistant GUI access):
 ```
 ssh -J serveo.net -i ~/.ssh/homeassistant@dacha_id_ed25519 -L 8000:localhost:8123 homeassistant@my-serveo-alias

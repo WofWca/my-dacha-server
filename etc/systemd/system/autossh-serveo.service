@@ -1,0 +1,12 @@
+[Unit]
+Description=AutoSSH serveo.net reverse tunnel
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+# To avoid adding aliases to the git repo
+EnvironmentFile=/home/homeassistant/autossh-serveo-aliases.env
+ExecStart=/usr/bin/autossh -M 0 -o ServerAliveInterval=60 -R ${SERVEO_ALIAS_1}:22:localhost:22 -R ${SERVEO_ALIAS_2}:22:localhost:22 serveo.net
+
+[Install]
+WantedBy=multi-user.target

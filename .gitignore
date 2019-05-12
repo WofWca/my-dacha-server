@@ -26,6 +26,9 @@
 /etc/systemd/system/*
 !/etc/systemd/system/home-assistant@homeassistant.service
 
+# AutoSSH serveo.net reverse tunnel service config
+!/etc/systemd/system/autossh-serveo.service
+
 # "Motion" config (drives the camera)
 /etc/motion/*
 !/etc/motion/motion.conf
