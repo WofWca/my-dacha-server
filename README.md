@@ -66,6 +66,7 @@ New profiles: skip
 To                         Action      From
 --                         ------      ----
 22/tcp                     ALLOW IN    Anywhere
+Anywhere                   ALLOW IN    192.168.0.0/16
 22/tcp (v6)                ALLOW IN    Anywhere (v6)
 ```
 
