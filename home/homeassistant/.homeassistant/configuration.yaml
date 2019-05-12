@@ -76,6 +76,7 @@ mqtt:
   broker: localhost
   username: vladimir
   password: !secret mqtt_password
+  discovery: true
 
 # Camera
 camera cam1:
