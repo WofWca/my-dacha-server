@@ -70,6 +70,11 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
+mqtt:
+  broker: localhost
+  username: vladimir
+  password: !secret mqtt_password
+
 # Camera
 camera cam1:
   name: usb_camera_1
