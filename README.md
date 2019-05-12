@@ -54,8 +54,17 @@ To                         Action      From
 22/tcp (v6)                ALLOW IN    Anywhere (v6)
 ```
 
-## Mosquitto (MQTT broker)
-`sudo apt-get install mosqutto`, change/add config files. Make Home Assistant run after Mosquitto is running (edit the Home Assistant service file).
+## Sonoff devices
+### Mosquitto (MQTT broker)
+`sudo apt-get install mosqutto`, change/add config files.
+
+### Home Assistant
+1. Make Home Assistant run after Mosquitto is running (edit the Home Assistant service file).
+2. Enable MQTT autodiscovery
+
+### Devices themselves
+1. Install the [Sonoff-Tasmota firmware](https://github.com/arendst/Sonoff-Tasmota)
+2. [`SetOption19 1`](https://github.com/arendst/Sonoff-Tasmota/wiki/Home-Assistant)
 
 ## Autorun
 `/etc/systemd/system/home-assistant@homeassistant.service`
