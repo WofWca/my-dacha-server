@@ -14,6 +14,10 @@ diff_files+=(/etc/motion/motion.conf.diff)
 curr_files+=(/etc/ufw/ufw.conf		/etc/ufw/user.rules		/etc/ufw/user6.rules)
 orig_files+=(/etc/ufw/original_ufw.conf	/etc/ufw/original_user.rules	/etc/ufw/original_user6.rules)
 diff_files+=(/etc/ufw/ufw.conf.diff     /etc/ufw/user.rules.diff	/etc/ufw/user6.rules.diff)
+# Mosquitto
+curr_files+=(/etc/mosquitto/mosquitto.conf)
+orig_files+=(/etc/mosquitto/original_mosquitto.conf)
+diff_files+=(/etc/mosquitto/mosquitto.conf.diff)
 
 for (( i=0; i<${#curr_files[@]}; i++ )) do
 	if [ -e ${diff_files[i]} ]
