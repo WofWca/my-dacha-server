@@ -1,9 +1,22 @@
 ![UI Screenshot](ui_screenshot.png)
 
 ## Remote access
-##### TL;DR
-Server: `ssh -R dacha:22:localhost:22 serveo.net`. `autossh`, to be precise.
-Client: `ssh -J serveo.net -i ~/.ssh/homeassistant@dacha_id_ed25519 -L 8000:localhost:8123 homeassistant@dacha`, where `homeassistant@dacha_id_ed25519` is a private SSH key for server user `homeassistant`. Then go to `localhost:8000`.
+#### Server:
+```
+autossh -M 0 -o ServerAliveInterval=60 -R my-serveo-alias:22:localhost:22 -R my-reserve-serveo-alias:22:localhost:22 serveo.net
+```
+#### Client (Home Assistant GUI access):
+```
+ssh -J serveo.net -i ~/.ssh/homeassistant@dacha_id_ed25519 -L 8000:localhost:8123 homeassistant@my-serveo-alias
+```
+where `homeassistant@dacha_id_ed25519` is a private SSH key for server user `homeassistant`.
+Home Assistant GUI will be available at port 8000 of the machine that executed this command.
+This command can be executed on the home router (perhaps with OpenWRT firmware), perhaps with `autossh` too.
+
+#### Client (terminal access):
+```
+ssh -J serveo.net -i ~/.ssh/my-admin-user@dacha_id_ed25519 my-admin-user@my-serveo-alias
+```
 
 In order for two computers to communicate via internet, there must be one with a real IP. As most (if not all) of ISPs currently use NAT (it's called CG-NAT), we can't directly connect clients and the server.
 There are a couple of solutions:
