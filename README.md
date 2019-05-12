@@ -37,6 +37,7 @@ The UFW is disabled by default. Config files at `/etc/ufw/` are the results of:
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow ssh
+ufw allow from 192.168.0.0/16
 ufw enable
 ```
 
