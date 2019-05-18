@@ -1,0 +1,12 @@
+[Unit]
+Description=Establish a reverse SSH tunnel with a remote server
+After=network.target
+
+[Service]
+Environment="AUTOSSH_GATETIME=0"
+# To avoid adding the hostname to the git repo:
+EnvironmentFile=/home/homeassistant/autossh-forwarder-info.env
+ExecStart=/usr/bin/autossh -M 0 -o ServerAliveInterval=60 -i ${PRIVATE_KEY_PATH} -N -R *:50022:localhost:22 ssh-forwarder@${FORWARDER_HOSTNAME}
+
+[Install]
+WantedBy=multi-user.target

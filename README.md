@@ -3,21 +3,20 @@
 ## Remote access
 #### Server:
 ```
-autossh -M 0 -o ServerAliveInterval=60 -R my-serveo-alias:22:localhost:22 -R my-reserve-serveo-alias:22:localhost:22 serveo.net
+autossh -M 0 -o ServerAliveInterval=60 -i /root/.ssh/private_key_name -N -R *:50022:localhost:22 ssh-forwarder-user@subdomain.vps-hosting.com
 ```
 A service is configured for this. Before launching the service, a manual connection needs to be performed as the superuser in order to add the server's fingerprint to `known_hosts`.
 
 #### Client (Home Assistant GUI access):
 ```
-ssh -J serveo.net -i ~/.ssh/homeassistant@dacha_id_ed25519 -L 8000:localhost:8123 homeassistant@my-serveo-alias
+ssh -i ~/.ssh/homeassistant_user_privatekey -N -L 8000:localhost:8123 homeassistant@subdomain.vps-hosting.com -p 50022
 ```
-where `homeassistant@dacha_id_ed25519` is a private SSH key for server user `homeassistant`.
 Home Assistant GUI will be available at port 8000 of the machine that executed this command.
-This command can be executed on the home router (perhaps with OpenWRT firmware), perhaps with `autossh` too.
+This command may be executed on a home router (perhaps with OpenWRT firmware), perhaps with `autossh` too.
 
 #### Client (terminal access):
 ```
-ssh -J serveo.net -i ~/.ssh/my-admin-user@dacha_id_ed25519 my-admin-user@my-serveo-alias
+ssh -i ~/.ssh/my-admin-user_pkey my-admin-user@subdomain.vps-hosting.com -p 50022
 ```
 
 In order for two computers to communicate via internet, there must be one with a real IP. As most (if not all) of ISPs currently use NAT (it's called CG-NAT), we can't directly connect clients and the server.
@@ -31,12 +30,15 @@ There are a couple of solutions:
 - Use an intermediate host, where we can set up a reverse SSH tunnel. Like "serveo.net".
 
     If it's down, communication will be interrupted. It can be solved by setting up an additional tunnel on a different server.
-    Also, "serveo.net" currently doesn't load using "MTS" ISP.
+    Also, "serveo.net"'s IP is currently blocked.
 - VPN
 
     Has to be expensive
+- VPS with a reverse SSH tunnel
 
-We decided to use "serveo.net".
+    Has to be even more expensive.
+
+We've decided to use a VPS, screw this.
 
 SSHD config's at `/etc/ssh/sshd_config`
 
