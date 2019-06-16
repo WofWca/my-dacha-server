@@ -20,7 +20,7 @@
 !/etc/ufw/
 !/etc/ssh/
 !/etc/mosquitto/
-!/etc/rinetd.conf
+!/etc/rinetd_example.conf
 
 # Home Assistant service config
 /etc/systemd/*
