@@ -9,7 +9,7 @@ A service is configured for this. Before launching the service, a manual connect
 
 #### Client (Home Assistant GUI access):
 ```
-ssh -i ~/.ssh/homeassistant_user_privatekey -N -L 8000:localhost:8123 homeassistant@subdomain.vps-hosting.com -p 50022
+ssh -i ~/.ssh/homeassistant_user_privatekey -N -L *:8000:localhost:8123 homeassistant@subdomain.vps-hosting.com -p 50022
 ```
 Home Assistant GUI will be available at port 8000 of the machine that executed this command.
 This command may be executed on a home router (perhaps with OpenWRT firmware), perhaps with `autossh` too.
