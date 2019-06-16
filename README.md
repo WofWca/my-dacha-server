@@ -42,6 +42,9 @@ We've decided to use a VPS, screw this.
 
 SSHD config's at `/etc/ssh/sshd_config`
 
+### rinetd
+Config - `/etc/rinetd.conf`. This helps accessing devices on the remote network (e.g. router, Sonoff devices).
+
 ## OS
 The system's set up on Linux Mint.
 
