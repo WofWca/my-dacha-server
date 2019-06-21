@@ -59,8 +59,8 @@
       entity_id: switch.pump
 
 
-# Power state sync (https://github.com/arendst/Sonoff-Tasmota/wiki/Home-Assistant#tip-sync-power-state)
-- alias: "Power state on HA start-up"
+# Sonoff power state sync (https://github.com/arendst/Sonoff-Tasmota/wiki/Home-Assistant#tip-sync-power-state)
+- alias: "Sonoff power state on HA start-up"
   hide_entity: true
   trigger:
     platform: homeassistant
