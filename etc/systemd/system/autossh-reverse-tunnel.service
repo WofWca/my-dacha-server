@@ -6,7 +6,7 @@ After=network.target
 Environment="AUTOSSH_GATETIME=0"
 # To avoid adding the hostname to the git repo:
 EnvironmentFile=/home/homeassistant/autossh-forwarder-info.env
-ExecStart=/usr/bin/autossh -M 0 -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -i ${PRIVATE_KEY_PATH} -N -R *:50022:localhost:22 ssh-forwarder@${FORWARDER_HOSTNAME}
+ExecStart=/usr/bin/autossh -M 0 -o ServerAliveInterval=45 -o ServerAliveCountMax=1 -o ExitOnForwardFailure=yes -i ${PRIVATE_KEY_PATH} -N -R *:50022:localhost:22 ssh-forwarder@${FORWARDER_HOSTNAME}
 
 [Install]
 WantedBy=multi-user.target
