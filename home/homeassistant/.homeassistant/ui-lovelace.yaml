@@ -23,10 +23,9 @@ views:
         entity: camera.usb_camera_1
         show_name: no
         show_state: no
-      - title: Debug
-        type: entities
+      - type: entities
+        title: Мобильная розетка
         show_header_toggle: false
         entities:
-          - input_boolean.well_stub
-          - input_boolean.pump_stub
-          - input_boolean.tank_stub
+          - switch.sonoff_plug
+          - sensor.sonoff_plug_status
