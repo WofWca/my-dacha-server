@@ -4,7 +4,7 @@ binary_sensor.well:
   friendly_name: Скважина
 input_boolean.pump_desired_state:
   friendly_name: Насос, желательное состояние
-input_boolean.automation_pump_off_when_no_water:
+input_boolean.automation_pump_off_when_well_empty:
   friendly_name: Выключать насос в отсутствие воды
 binary_sensor.pump_state:
   friendly_name: Насос

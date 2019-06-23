@@ -35,7 +35,7 @@
   trigger:
     # Aut
     - platform: state
-      entity_id: input_boolean.automation_pump_off_when_no_water
+      entity_id: input_boolean.automation_pump_off_when_well_empty
     # Wel
     - platform: state
       entity_id: binary_sensor.well
@@ -56,7 +56,7 @@
             and (
               is_state('binary_sensor.well', 'on')
               or
-              not is_state('input_boolean.automation_pump_off_when_no_water', 'on')
+              not is_state('input_boolean.automation_pump_off_when_well_empty', 'on')
             )
         %}\
           turn_on\
@@ -103,6 +103,6 @@
     - platform: state
       entity_id: input_boolean.pump_desired_state
     - platform: state
-      entity_id: input_boolean.automation_pump_off_when_no_water
+      entity_id: input_boolean.automation_pump_off_when_well_empty
     - platform: state
       entity_id: input_number.pump_break_duration

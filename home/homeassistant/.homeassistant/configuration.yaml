@@ -133,7 +133,7 @@ switch:
           entity_id: input_boolean.pump_stub
 
 input_boolean:
-  automation_pump_off_when_no_water:
+  automation_pump_off_when_well_empty:
     icon: mdi:settings-box
     initial: on
   pump_desired_state:
