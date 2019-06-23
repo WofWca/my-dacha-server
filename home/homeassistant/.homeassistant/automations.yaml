@@ -9,7 +9,7 @@
 # Brk = Whether the pump is on its break
 # Pum = Pump actual state
 #
-# Brk Aut Wel Des Pum Brk
+# Brk Aut Wel Des Pum
 # 0   0   0   0   0
 # 0   0   0   1   1
 # 0   0   1   0   0
