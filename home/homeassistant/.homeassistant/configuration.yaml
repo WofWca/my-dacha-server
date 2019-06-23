@@ -85,7 +85,6 @@ camera cam1:
   mjpeg_url: http://localhost:8081
 
 binary_sensor:
-  # The well stub
   - platform: template
     sensors:
       well:
@@ -94,7 +93,6 @@ binary_sensor:
         # On = full, off = not full.
         device_class: moisture
         icon_template: mdi:water-pump
-  # The tank stub
   - platform: template
     sensors:
       tank:
@@ -122,8 +120,7 @@ switch:
     switches:
       pump:
         value_template: "{{ states('input_boolean.pump_stub') }}"
-        entity_id: input_boolean.pump_stub # It won't work. Apparently,
-        # templates do not generate state changes Bug?
+        entity_id: input_boolean.pump_stub
         turn_on:
           # TODO
           service: input_boolean.turn_on
