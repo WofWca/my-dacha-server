@@ -10,12 +10,12 @@ views:
         show_header_toggle: false
         entities:
           - input_boolean.pump_desired_state
-          - type: divider
+          - type: section
           - binary_sensor.pump_state
           - timer.pump_break
           - binary_sensor.well
           - binary_sensor.tank
-          - type: divider
+          - type: section
           - input_boolean.automation_pump_off_when_well_empty
           - input_boolean.automation_pump_off_when_tank_full
           - input_number.pump_break_duration
