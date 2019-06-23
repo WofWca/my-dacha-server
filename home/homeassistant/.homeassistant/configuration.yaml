@@ -51,14 +51,14 @@ logbook:
 system_health:
 
 # Enables a map showing the location of tracked devices
-map:
+# map:
 
 # Track the sun
-sun:
+# sun:
 
 # Weather prediction
-sensor weather:
-  - platform: yr
+# sensor weather:
+#   - platform: yr
 
 # Text to speech
 tts:
