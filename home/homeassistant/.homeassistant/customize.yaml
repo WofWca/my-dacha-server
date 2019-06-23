@@ -15,7 +15,7 @@ switch.sonoff_plug:
 sensor.sonoff_plug_status:
   friendly_name: "Мобильная розетка: статус"
 input_number.pump_break_duration:
-  friendly_name: "Перерыв, длит."
+  friendly_name: "Насос, длит. перерыва"
   unit_of_measurement: "мин"
 timer.pump_break:
-  friendly_name: "Перерыв"
+  friendly_name: "Насос, перерыв"

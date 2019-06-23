@@ -9,16 +9,23 @@ views:
         type: entities
         show_header_toggle: false
         entities:
-          - input_boolean.pump_desired_state
+          - entity: input_boolean.pump_desired_state
+            name: Желательное состояние
+
           - type: section
           - binary_sensor.pump_state
-          - timer.pump_break
           - binary_sensor.well
           - binary_sensor.tank
+          - entity: timer.pump_break
+            name: Перерыв
+
           - type: section
-          - input_boolean.automation_pump_off_when_well_empty
-          - input_boolean.automation_pump_off_when_tank_full
-          - input_number.pump_break_duration
+          - entity: input_boolean.automation_pump_off_when_well_empty
+            name: Выкл. при пустой скважине
+          - entity: input_boolean.automation_pump_off_when_tank_full
+            name: Выкл. при полном резервуаре
+          - entity: input_number.pump_break_duration
+            name: Перерыв, длит.
       - type: picture-entity
         entity: camera.usb_camera_1
         show_name: no

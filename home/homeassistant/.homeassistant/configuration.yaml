@@ -93,6 +93,7 @@ binary_sensor:
         entity_id: input_boolean.well_stub
         # On = full, off = not full.
         device_class: moisture
+        icon_template: mdi:water-pump
   # The tank stub
   - platform: template
     sensors:
@@ -101,6 +102,12 @@ binary_sensor:
         entity_id: input_boolean.tank_stub
         # On = full, off = not full.
         device_class: moisture
+        icon_template: >-
+          {% if is_state('input_boolean.tank_stub', 'on') %}
+            mdi:battery-90
+          {% else %}
+            mdi:battery-20
+          {% endif %}
   # To display the pump state without making it possible to change it.
   - platform: template
     sensors:
@@ -108,12 +115,6 @@ binary_sensor:
         value_template: "{{ is_state('switch.pump', 'on') }}" # TODO Can't it be like `states.switch.pump.state` ?
         entity_id: switch.pump
         device_class: plug
-        icon_template: >-
-          {% if is_state('switch.pump', 'on') %}
-            mdi:engine
-          {% else %}
-            mdi:engine-off
-          {% endif %}
 
 switch:
   # TODO You can then leave it as a wrapper or replace it with a real one.
@@ -134,10 +135,10 @@ switch:
 
 input_boolean:
   automation_pump_off_when_well_empty:
-    icon: mdi:settings-box
+    icon: mdi:water-pump
     initial: on
   automation_pump_off_when_tank_full:
-    icon: mdi:settings-box
+    icon: mdi:battery-90
   pump_desired_state:
   # TODO remove these when you have the actual sensors/switches.
   pump_stub:
