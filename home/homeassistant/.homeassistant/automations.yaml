@@ -6,19 +6,28 @@
 # turn it back on when it comes back automation enabled/disabled.
 # Wel = Water present in the well
 # Des = Pump desired state
+# Brk = Whether the pump is on its break
 # Pum = Pump actual state
 #
-# Aut Wel Des Pum
-# 0   0   0   0
-# 0   0   1   1
-# 0   1   0   0
-# 0   1   1   1
-# 1   0   0   0
-# 1   0   1   0
-# 1   1   0   0
-# 1   1   1   1
+# Brk Aut Wel Des Pum Brk
+# 0   0   0   0   0
+# 0   0   0   1   1
+# 0   0   1   0   0
+# 0   0   1   1   1
+# 0   1   0   0   0
+# 0   1   0   1   0
+# 0   1   1   0   0
+# 0   1   1   1   1
+# 1   0   0   0   0
+# 1   0   0   1   0
+# 1   0   1   0   0
+# 1   0   1   1   0
+# 1   1   0   0   0
+# 1   1   0   1   0
+# 1   1   1   0   0
+# 1   1   1   1   0
 #
-# Pum = (!Aut * Des) + (Aut * Wel * Des)
+# Pum = !Brk * ((!Aut * Des) + (Aut * Wel * Des))
 - id: pump
   alias: pump
   initial_state: on
@@ -33,23 +42,30 @@
     # Des
     - platform: state
       entity_id: input_boolean.pump_desired_state
+    # Brk
+    - platform: state
+      entity_id: timer.pump_break
   action:
     - service_template:
         "switch.\
         {%
           if
+            not is_state('timer.pump_break', 'active')
+            and
             (
-              not is_state('input_boolean.automation_pump_off_when_no_water', 'on')
-              and
-              is_state('input_boolean.pump_desired_state', 'on')
-            )
-            or
-            (
-              is_state('input_boolean.automation_pump_off_when_no_water', 'on')
-              and
-              is_state('binary_sensor.well', 'on')
-              and
-              is_state('input_boolean.pump_desired_state', 'on')
+              (
+                not is_state('input_boolean.automation_pump_off_when_no_water', 'on')
+                and
+                is_state('input_boolean.pump_desired_state', 'on')
+              )
+              or
+              (
+                is_state('input_boolean.automation_pump_off_when_no_water', 'on')
+                and
+                is_state('binary_sensor.well', 'on')
+                and
+                is_state('input_boolean.pump_desired_state', 'on')
+              )
             )
         %}\
           turn_on\
@@ -70,3 +86,32 @@
       data:
         topic: "sonoffs/cmnd/state"
         payload: ""
+
+- id: set_pump_break_timer_on_pump_off
+  alias: Set the pump break timer
+  hide_entity: true
+  initial_state: on
+  action:
+    service: timer.start
+    data_template:
+      entity_id: timer.pump_break
+      duration: "{{ (float(states.input_number.pump_break_duration.state) * 60) | int }}" # Int seconds
+  trigger:
+    platform: state
+    entity_id: switch.pump
+    to: 'off'
+
+- id: reset_pump_break_timer_on_user_actions
+  alias: Reset the pump break timer when the user interacts with it
+  initial_state: on
+  action:
+    service: timer.finish
+    data:
+      entity_id: timer.pump_break
+  trigger:
+    - platform: state
+      entity_id: input_boolean.pump_desired_state
+    - platform: state
+      entity_id: input_boolean.automation_pump_off_when_no_water
+    - platform: state
+      entity_id: input_number.pump_break_duration

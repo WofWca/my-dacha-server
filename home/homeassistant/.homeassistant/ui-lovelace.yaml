@@ -15,10 +15,12 @@ views:
           - input_boolean.pump_desired_state
           - type: divider
           - binary_sensor.pump_state
+          - timer.pump_break
           - binary_sensor.well
           - binary_sensor.tank
           - type: divider
           - input_boolean.automation_pump_off_when_no_water
+          - input_number.pump_break_duration
       - type: picture-entity
         entity: camera.usb_camera_1
         show_name: no

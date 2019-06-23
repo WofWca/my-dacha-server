@@ -142,3 +142,18 @@ input_boolean:
   well_stub:
   tank_stub:
 
+input_number:
+  # Serves to limit the pump switching frequency
+  pump_break_duration:
+    name: "Pump break duration"
+    initial: 15
+    min: 5
+    max: 180
+    step: 5
+    mode: slider
+    unit_of_measurement: min
+    icon: "mdi:alarm-snooze"
+
+timer:
+  # See `pump_break_duration`
+  pump_break:
