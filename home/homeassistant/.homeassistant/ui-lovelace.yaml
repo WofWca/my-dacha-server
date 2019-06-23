@@ -19,7 +19,8 @@ views:
           - binary_sensor.well
           - binary_sensor.tank
           - type: divider
-          - input_boolean.automation_pump_off_when_no_water
+          - input_boolean.automation_pump_off_when_well_empty
+          - input_boolean.automation_pump_off_when_tank_full
           - input_number.pump_break_duration
       - type: picture-entity
         entity: camera.usb_camera_1

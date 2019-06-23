@@ -1,44 +1,35 @@
 # Pump automation
 #
-# Truth table.
-#
-# Aut = Turn off the pump when there is not water in the well,
+# AuW = Turn off the pump when there is not water in the well,
 # turn it back on when it comes back automation enabled/disabled.
+# AuT = Similar to AuT, turn the pump off when the tank is full.
 # Wel = Water present in the well
+# Tnk = Water present in the tank
 # Des = Pump desired state
 # Brk = Whether the pump is on its break
 # Pum = Pump actual state
 #
-# Brk Aut Wel Des Pum
-# 0   0   0   0   0
-# 0   0   0   1   1
-# 0   0   1   0   0
-# 0   0   1   1   1
-# 0   1   0   0   0
-# 0   1   0   1   0
-# 0   1   1   0   0
-# 0   1   1   1   1
-# 1   0   0   0   0
-# 1   0   0   1   0
-# 1   0   1   0   0
-# 1   0   1   1   0
-# 1   1   0   0   0
-# 1   1   0   1   0
-# 1   1   1   0   0
-# 1   1   1   1   0
+# If you ever need to add more variables to this function, you can convert it to a truth
+# table to make it easier.
 #
-# Pum = Des * !Brk * (Wel + !Aut)
+# Pum = Des * !Brk * (Wel + !AuW) * (!Tnk + !AuT)
 - id: pump
   alias: pump
   initial_state: on
   hide_entity: true
   trigger:
-    # Aut
+    # AuW
     - platform: state
-      entity_id: input_boolean.automation_pump_off_when_no_water
+      entity_id: input_boolean.automation_pump_off_when_well_empty
+    # AuT
+    - platform: state
+      entity_id: input_boolean.automation_pump_off_when_tank_full
     # Wel
     - platform: state
       entity_id: binary_sensor.well
+    # Wel
+    - platform: state
+      entity_id: binary_sensor.tank
     # Des
     - platform: state
       entity_id: input_boolean.pump_desired_state
@@ -58,7 +49,12 @@
             and (
               is_state('binary_sensor.well', 'on')
               or
-              not is_state('input_boolean.automation_pump_off_when_no_water', 'on')
+              not is_state('input_boolean.automation_pump_off_when_well_empty', 'on')
+            )
+            and (
+              not is_state('binary_sensor.tank', 'on')
+              or
+              not is_state('input_boolean.automation_pump_off_when_tank_full', 'on')
             )
         %}\
           turn_on\
@@ -105,6 +101,8 @@
     - platform: state
       entity_id: input_boolean.pump_desired_state
     - platform: state
-      entity_id: input_boolean.automation_pump_off_when_no_water
+      entity_id: input_boolean.automation_pump_off_when_well_empty
+    - platform: state
+      entity_id: input_boolean.automation_pump_off_when_tank_full
     - platform: state
       entity_id: input_number.pump_break_duration
