@@ -27,7 +27,7 @@
 # 1   1   1   0   0
 # 1   1   1   1   0
 #
-# Pum = !Brk * ((!Aut * Des) + (Aut * Wel * Des))
+# Pum = Des * !Brk * (Wel + !Aut)
 - id: pump
   alias: pump
   initial_state: on
@@ -50,22 +50,13 @@
         "switch.\
         {%
           if
-            not is_state('timer.pump_break', 'active')
+            is_state('input_boolean.pump_desired_state', 'on')
             and
-            (
-              (
-                not is_state('input_boolean.automation_pump_off_when_no_water', 'on')
-                and
-                is_state('input_boolean.pump_desired_state', 'on')
-              )
+            not is_state('timer.pump_break', 'active')
+            and (
+              is_state('binary_sensor.well', 'on')
               or
-              (
-                is_state('input_boolean.automation_pump_off_when_no_water', 'on')
-                and
-                is_state('binary_sensor.well', 'on')
-                and
-                is_state('input_boolean.pump_desired_state', 'on')
-              )
+              not is_state('input_boolean.automation_pump_off_when_no_water', 'on')
             )
         %}\
           turn_on\
