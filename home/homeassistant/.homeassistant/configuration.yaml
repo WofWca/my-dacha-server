@@ -136,6 +136,8 @@ input_boolean:
   automation_pump_off_when_well_empty:
     icon: mdi:settings-box
     initial: on
+  automation_pump_off_when_tank_full:
+    icon: mdi:settings-box
   pump_desired_state:
   # TODO remove these when you have the actual sensors/switches.
   pump_stub:
