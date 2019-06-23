@@ -45,6 +45,8 @@
     # Brk
     - platform: state
       entity_id: timer.pump_break
+    - platform: homeassistant
+      event: start
   action:
     - service_template:
         "switch.\
