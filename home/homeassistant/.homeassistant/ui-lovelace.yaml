@@ -34,5 +34,5 @@ views:
         title: Мобильная розетка
         show_header_toggle: false
         entities:
-          - switch.sonoff_plug
-          - sensor.sonoff_plug_status
+          - switch.sonoff_plug_1
+          - sensor.sonoff_plug_1_status

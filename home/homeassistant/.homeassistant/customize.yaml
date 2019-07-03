@@ -10,9 +10,9 @@ input_boolean.automation_pump_off_when_tank_full:
   friendly_name: Выключать насос при полном резервуаре
 binary_sensor.pump_state:
   friendly_name: Насос
-switch.sonoff_plug:
+switch.sonoff_plug_1:
   friendly_name: Мобильная розетка
-sensor.sonoff_plug_status:
+sensor.sonoff_plug_1_status:
   friendly_name: "Мобильная розетка: статус"
 input_number.pump_break_duration:
   friendly_name: "Насос, длит. перерыва"
