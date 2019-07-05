@@ -146,10 +146,9 @@ input_number:
   # Serves to limit the pump switching frequency
   pump_break_duration:
     name: "Pump break duration"
-    initial: 15
-    min: 5
-    max: 180
-    step: 5
+    min: 1
+    max: 60
+    step: 1
     mode: slider
     unit_of_measurement: min
     icon: "mdi:alarm-snooze"
