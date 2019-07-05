@@ -78,6 +78,11 @@ mqtt:
   password: !secret mqtt_password
   discovery: true
 
+sensor:
+  - platform: uptime
+    name: Uptime
+    unit_of_measurement: hours
+
 # Camera
 camera cam1:
   name: usb_camera_1

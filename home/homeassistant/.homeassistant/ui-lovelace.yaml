@@ -36,3 +36,8 @@ views:
         entities:
           - switch.sonoff_plug_1
           - sensor.sonoff_plug_1_status
+      - title: Статус
+        type: glance
+        show_header_toggle: false
+        entities:
+          - sensor.uptime
