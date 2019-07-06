@@ -138,7 +138,6 @@ switch:
 input_boolean:
   automation_pump_off_when_well_empty:
     icon: mdi:water-pump
-    initial: on
   automation_pump_off_when_tank_full:
     icon: mdi:battery-90
   pump_desired_state:
