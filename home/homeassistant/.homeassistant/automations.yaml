@@ -108,6 +108,7 @@
       entity_id: input_number.pump_break_duration
 
 - id: toggle_pump_desired_state_on_pump_controller_button_press
+  alias: Toggle the pump desired state on pump controller button press
   trigger:
     platform: mqtt
     topic: pump_desired_state_toggle/cmnd/POWER
