@@ -111,10 +111,21 @@
   alias: Toggle the pump desired state on pump controller button press
   trigger:
     platform: mqtt
-    topic: pump_desired_state_toggle/cmnd/POWER
+    topic: sonoff_basic_1_button/cmnd/POWER
+    payload: TOGGLE
   action:
     service: input_boolean.toggle
     entity_id: input_boolean.pump_desired_state
 
 # TODO for sonoff devices, update the sensor state on each %topic%/cmnd/POWER1 message,
 # not just with %device%/tele/SENSOR
+
+- id: toggle_tank_automation_on_pump_controller_button_hold
+  alias: Toggle the tank automation on pump controller button hold
+  trigger:
+    platform: mqtt
+    topic: sonoff_basic_1_button/cmnd/POWER
+    payload: HOLD
+  action:
+    service: input_boolean.toggle
+    entity_id: input_boolean.automation_pump_off_when_tank_full
