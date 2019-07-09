@@ -124,6 +124,7 @@ binary_sensor:
     availability_topic: "sonoff-basic-1/tele/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+    device_class: moisture
   # To display the pump state without making it possible to change it.
   - platform: template
     sensors:
