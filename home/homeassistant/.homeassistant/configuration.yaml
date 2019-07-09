@@ -98,23 +98,16 @@ binary_sensor:
         # On = full, off = not full.
         device_class: moisture
         icon_template: mdi:water-pump
-  - platform: template
-    sensors:
-      tank:
-        # In case it's unavailable, this should be 'on'. // TODO is there a better way?
-        value_template: "{{ states('binary_sensor.sonoff_basic_1_sw') != 'off' }}"
-        entity_id: binary_sensor.sonoff_basic_1_sw
-        # On = full, off = not full.
-        device_class: moisture
-        icon_template: >-
-          {% set val = states('binary_sensor.sonoff_basic_1_sw') %}
-          {% if val == 'on' %}
-            mdi:battery-90
-          {% elif val == 'off' %}
-            mdi:battery-20
-          {% else %}
-            mdi:help
-          {% endif %}
+  - platform: mqtt
+    name: tank
+    state_topic: "sonoff-basic-1/tele/SENSOR"
+    value_template: "{{ value_json['Switch1'] }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    availability_topic: "sonoff-basic-1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: moisture
   - platform: mqtt
     name: tank_sensor_connectivity
     state_topic: "sonoff-basic-1/tele/SENSOR"
