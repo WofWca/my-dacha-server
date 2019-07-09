@@ -1,5 +1,7 @@
 binary_sensor.tank:
   friendly_name: Резервуар
+binary_sensor.tank_sensor_connectivity:
+  friendly_name: "Датчик резервуара"
 binary_sensor.well:
   friendly_name: Скважина
 input_boolean.pump_desired_state:

@@ -115,6 +115,16 @@ binary_sensor:
           {% else %}
             mdi:help
           {% endif %}
+  - platform: mqtt
+    name: tank_sensor_connectivity
+    state_topic: "sonoff-basic-1/tele/SENSOR"
+    value_template: "{{ value_json['Switch2'] }}"
+    payload_on: "ON"
+    payload_off: "OFF"
+    availability_topic: "sonoff-basic-1/tele/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: connectivity
   # To display the pump state without making it possible to change it.
   - platform: template
     sensors:
