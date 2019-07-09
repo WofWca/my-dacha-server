@@ -115,3 +115,6 @@
   action:
     service: input_boolean.toggle
     entity_id: input_boolean.pump_desired_state
+
+# TODO for sonoff devices, update the sensor state on each %topic%/cmnd/POWER1 message,
+# not just with %device%/tele/SENSOR
