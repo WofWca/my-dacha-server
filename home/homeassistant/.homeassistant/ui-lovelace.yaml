@@ -41,3 +41,4 @@ views:
         show_header_toggle: false
         entities:
           - sensor.uptime
+          - binary_sensor.tank_sensor_connectivity
