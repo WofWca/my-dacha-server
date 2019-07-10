@@ -111,7 +111,7 @@
   alias: Toggle the pump desired state on pump controller button press
   trigger:
     platform: mqtt
-    topic: sonoff_basic_1_button/cmnd/POWER
+    topic: sonoff_basic_1_button/cmnd/POWER1
     payload: TOGGLE
   action:
     service: input_boolean.toggle
@@ -124,8 +124,20 @@
   alias: Toggle the tank automation on pump controller button hold
   trigger:
     platform: mqtt
-    topic: sonoff_basic_1_button/cmnd/POWER
+    topic: sonoff_basic_1_button/cmnd/POWER1
     payload: HOLD
   action:
     service: input_boolean.toggle
     entity_id: input_boolean.automation_pump_off_when_tank_full
+
+- id: sync_sonoff_led_with_tank_automation
+  alias: Sync the Sonoff LED with tank automation status
+  trigger:
+    - platform: state
+      entity_id: input_boolean.automation_pump_off_when_tank_full
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "sonoff-basic-1/cmnd/POWER2"
+        payload_template: "{{ states('input_boolean.automation_pump_off_when_tank_full') }}"
+        retain: true
